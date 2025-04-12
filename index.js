@@ -9,3 +9,5 @@ app.get('/ping', (req, res) => {
 app.listen(port, () => {
   console.log(`API corriendo en http://localhost:${port}`);
 });
+
+module.exports = app;
