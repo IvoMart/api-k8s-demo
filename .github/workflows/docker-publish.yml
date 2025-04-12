@@ -1,4 +1,4 @@
-name: Build, Lint, Push and Deploy
+name: Build, Lint, Scan, Push and Deploy
 
 on:
   push:
@@ -54,14 +54,20 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
-      - name: Build and Push Docker image
-        if: success()
-        uses: docker/build-push-action@v5
+      
+      - name: Build image
+        run: docker build -t ivomartinez/api-k8s-demo:latest .
+  
+      - name: Scan Docker image with Trivy
+        uses: aquasecurity/trivy-action@master
         with:
-          context: .
-          push: true
-          tags: ivomartinez/api-k8s-demo:latest
+          image-ref: ivomartinez/api-k8s-demo:latest
+          exit-code: '1'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Push image
+        run: docker push ivomartinez/api-k8s-demo:latest
+  
   deploy:
     runs-on: self-hosted 
     needs: build-and-deploy
