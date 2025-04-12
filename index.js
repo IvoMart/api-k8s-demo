@@ -6,9 +6,9 @@ app.get('/ping', (req, res) => {
   res.json({ message: 'pong' });
 });
 
-app.listen(port, () => {
-  console.log(`API corriendo en http://localhost:${port}`);
-});
+app.listen(port, () => 
+  console.log(`API corriendo en http://localhost:${port}`
+})
 
 if (require.main === module) {
   app.listen(port, () => {
