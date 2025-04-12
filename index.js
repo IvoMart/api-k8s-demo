@@ -10,4 +10,10 @@ app.listen(port, () => {
   console.log(`API corriendo en http://localhost:${port}`);
 });
 
+if (require.main === module) {
+  app.listen(port, () => {
+    console.log(`API corriendo en http://localhost:${port}`);
+  });
+}
+
 module.exports = app;
