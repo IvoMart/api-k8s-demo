@@ -11,9 +11,9 @@ describe('GET /ping', () => {
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe('pong');
   });
-  done();
 });
 
 afterAll(done => {
+  app.close();
   done();
 });
