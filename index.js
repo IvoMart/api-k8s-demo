@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-let variable2;
-
 app.get('/ping', (req, res) => {
   res.json({ message: 'pong1' });
 });
