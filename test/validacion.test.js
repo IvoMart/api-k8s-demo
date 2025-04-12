@@ -10,5 +10,10 @@ describe('GET /ping', () => {
     const res = await request(app).get('/ping');
     expect(res.statusCode).toBe(200);
     expect(res.body.message).toBe('pong');
+    done();
   });
+});
+
+afterAll(done => {
+  done();
 });
