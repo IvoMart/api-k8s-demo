@@ -4,7 +4,7 @@
   "description": "Práctica básica de CD-CI con testing incluido",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --detectOpenHandles --forceExit"
   },
   "repository": {
     "type": "git",
